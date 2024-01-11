@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -11,7 +11,6 @@ const Dashboard = () => {
     email: "",
     password: "",
   });
-  
 
   useEffect(() => {
     // Retrieve the token from local storage
@@ -64,14 +63,18 @@ const Dashboard = () => {
     }
   };
 
- 
+  // logout///////////////////
+  function logout() {
+    localStorage.clear();
+    router.push("/");
+  }
 
   return (
     <div className="flex flex-col items-center pt-10 h-screen bg-slate-100">
+      
       <h1 className="text-2xl text-gray-600 font-bold mb-4">
         Registered Users
       </h1>
-
       {/* Table to display users */}
       <table className="min-w-fit divide-y divide-gray-200">
         <thead className="bg-gray-50 text-center">
@@ -105,11 +108,9 @@ const Dashboard = () => {
                     Delete
                   </button>
                   <Link href={`/dashboard/updateUser/${user.id}`}>
-                  <button
-                    className="bg-blue-500 p-1 rounded w-min text-xs mt-3"
-                  >
-                    Update
-                  </button>
+                    <button className="bg-blue-500 p-1 rounded w-min text-xs mt-3">
+                      Update
+                    </button>
                   </Link>
                 </>
               </>
@@ -117,6 +118,12 @@ const Dashboard = () => {
           ))}
         </tbody>
       </table>
+      <button
+        onClick={logout}
+        className="bg-orange-300 p-1 rounded w-20 text-md mt-3"
+      >
+        logout
+      </button>
     </div>
   );
 };

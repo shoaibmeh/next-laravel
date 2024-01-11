@@ -1,8 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+
 function UpdateUser(props) {
-  const router = useRouter()
+  const router = useRouter();
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -41,7 +42,7 @@ function UpdateUser(props) {
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
-          router.push('/dashboard'); // Redirect to /dashboard after successful update
+          router.back("/"); // Redirect to /dashboard after successful update
         })
         .catch((error) => {
           console.error("Error updating user:", error);
