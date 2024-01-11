@@ -42,7 +42,7 @@ function UpdateUser(props) {
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
-          router.back("/"); // Redirect to /dashboard after successful update
+          router.push("/dashboard"); // Redirect to /dashboard after successful update
         })
         .catch((error) => {
           console.error("Error updating user:", error);
